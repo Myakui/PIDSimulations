@@ -33,14 +33,9 @@ jobs:
       # 4. Set PYTHONPATH and Install Pyqt
       - name: Set PYTHONPATH and Install Pyqt
         run: |
-          set PYTHONPATH=D:\a\PIDSimulations\PIDSimulations
-          pip install pyqt6
+          set PYTHONPATH=%GITHUB_WORKSPACE%\PIDSimulations
+          pip install pyqt6 pyinstaller
       
-      # 5. Install PyInstaller
-      - name: Install PyInstaller
-        run: |
-          pip install pyinstaller
-
       # 6. Build the executable with PyInstaller
       - name: Build executable with PyInstaller
         run: |

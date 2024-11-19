@@ -29,14 +29,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
           poetry install
+
       # 4. Install PyInstaller
       - name: Install PyInstaller
         run: |
           pip install pyinstaller
+
       # 5. Build the executable with PyInstaller
       - name: Build executable with PyInstaller
         run: |
-          poetry run pyinstaller src/gui/main.py --onefile --name pid-sim.exe
+          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --collect-all PyQt6 --hidden-import=PyQt6.QtCore --hidden-import=PyQt6.QtWidgets --hidden-import=PyQt6.QtGui --clean
+      
       # 6. Verify the build (optional)
       - name: Verify executable
         run: |
@@ -44,6 +47,7 @@ jobs:
             Write-Error "Executable not found!"
             exit 1
           }
+
       # 7. Display directory structure for debugging (optional)
       - name: Display directory structure
         run: |

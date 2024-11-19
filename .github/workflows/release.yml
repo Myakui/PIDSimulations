@@ -30,18 +30,23 @@ jobs:
           pip install poetry
           poetry install
       
-      # 4. Set PYTHONPATH and Install PyInstaller
-      - name: Set PYTHONPATH and Install PyInstaller
+      # 4. Set PYTHONPATH and Install Pyqt
+      - name: Set PYTHONPATH and Install Pyqt
         run: |
           set PYTHONPATH=D:\a\PIDSimulations\PIDSimulations
+          pip install pyqt6
+      
+      # 5. Install PyInstaller
+      - name: Install PyInstaller
+        run: |
           pip install pyinstaller
 
-      # 5. Build the executable with PyInstaller
+      # 6. Build the executable with PyInstaller
       - name: Build executable with PyInstaller
         run: |
           pyinstaller src/gui/main.py --onefile --name pid-sim.exe --clean --collect-all PyQt6 --collect-submodules PyQt6
 
-      # 6. Verify the build (optional)
+      # 7. Verify the build (optional)
       - name: Verify executable
         run: |
           if (!(Test-Path "dist\pid-sim.exe")) {
@@ -49,13 +54,13 @@ jobs:
             exit 1
           }
 
-      # 7. Display directory structure for debugging (optional)
+      # 8. Display directory structure for debugging (optional)
       - name: Display directory structure
         run: |
           dir dist
         shell: cmd
 
-      # 8. Create Release and Upload EXE
+      # 9. Create Release and Upload EXE
       - name: Create Release and Upload EXE
         uses: softprops/action-gh-release@v2
         with:

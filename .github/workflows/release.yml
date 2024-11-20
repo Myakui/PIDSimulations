@@ -36,6 +36,11 @@ jobs:
           set PYTHONPATH=%GITHUB_WORKSPACE%\PIDSimulations
           pip install pyqt6
       
+      - name: Find PyQt6 path
+        run: |
+          echo "PYQT_PATH=$(python -c 'import PyQt6; print(PyQt6.__path__[0])')" >> $GITHUB_ENV
+        
+      
       # 4. Install PyInstaller
       - name: Install PyInstaller
         run: |

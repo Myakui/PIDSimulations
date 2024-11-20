@@ -43,7 +43,7 @@ jobs:
       # 5. Build the executable with PyInstaller
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --collect-all PyQt6 --collect-submodules PyQt6 --clean
+          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --collect-all PyQt6 --clean
       # 6. Verify the build (optional)
       - name: Verify executable
         run: |

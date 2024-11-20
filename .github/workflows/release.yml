@@ -29,6 +29,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
           poetry install
+      
+      # 4. Set PYTHONPATH and Install Pyqt
+      - name: Set PYTHONPATH and Install Pyqt
+        run: |
+          set PYTHONPATH=%GITHUB_WORKSPACE%\PIDSimulations
+          pip install pyqt6
+      
       # 4. Install PyInstaller
       - name: Install PyInstaller
         run: |

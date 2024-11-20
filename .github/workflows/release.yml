@@ -38,7 +38,9 @@ jobs:
       
       - name: Find PyQt6 path
         run: |
-          echo "PYQT_PATH=$(python -c 'import PyQt6; print(PyQt6.__path__[0])')" >> $GITHUB_ENV
+          $PYQT_PATH = python -c "import PyQt6; print(PyQt6.__path__[0])"
+          echo "PYQT_PATH=$PYQT_PATH" >> $GITHUB_ENV
+        
         
       
       # 4. Install PyInstaller

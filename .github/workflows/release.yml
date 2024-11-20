@@ -39,7 +39,7 @@ jobs:
       # 6. Build the executable with PyInstaller
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --collect-all PyQt6 --hidden-import PyQt6 --hidden-import PyQt6.QtCore --hidden-import PyQt6.QtGui --hidden-import PyQt6.QtWidgets --paths %VIRTUAL_ENV%/Lib/site-packages --clean > build-log.txt 2>&1
+          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --collect-all PyQt6 --hidden-import PyQt6 --hidden-import PyQt6.QtCore --hidden-import PyQt6.QtGui --hidden-import PyQt6.QtWidgets --paths %VIRTUAL_ENV%/Lib/site-packages --clean
 
 
 

@@ -39,7 +39,8 @@ jobs:
       # 6. Build the executable with PyInstaller
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --collect-all PyQt6 --hidden-import PyQt6 --hidden-import PyQt6.QtCore --hidden-import PyQt6.QtGui --hidden-import PyQt6.QtWidgets --paths %VIRTUAL_ENV%/Lib/site-packages --clean
+          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --collect-all PyQt6 --hidden-import PyQt6 --hidden-import PyQt6.QtCore --hidden-import PyQt6.QtGui --hidden-import PyQt6.QtWidgets --paths %VIRTUAL_ENV%/Lib/site-packages --clean --add-binary "C:\Users\yakov\Desktop\RussAtom\PIDSimulations\.venv\Lib\site-packages\PyQt6\Qt6\bin\*.dll;Qt6/bin"
+
 
 
 

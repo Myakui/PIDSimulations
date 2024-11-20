@@ -35,14 +35,11 @@ jobs:
         run: |
           set PYTHONPATH=%GITHUB_WORKSPACE%\PIDSimulations
           pip install pyqt6
-    
-      - name: Find PyQt6 path
-        run: |
-          $PYQT_PATH = python -c "import PyQt6; print(PyQt6.__path__[0])"
-          echo "PYQT_PATH=$PYQT_PATH" >> $GITHUB_ENV
-        shell: pwsh
-        
-        
+
+      # 5. Install Visual C++ Redistributables (для работы с DLL)
+      - name: Install Visual C++ Redistributables
+        run: choco install vcredist-all
+      
       
       # 4. Install PyInstaller
       - name: Install PyInstaller
@@ -51,7 +48,7 @@ jobs:
       # 5. Build the executable with PyInstaller
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --collect-all PyQt6 --clean
+          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --collect-all PyQt6 --collect-binaries Qt6 --clean
       # 6. Verify the build (optional)
       - name: Verify executable
         run: |

@@ -44,7 +44,7 @@ jobs:
       # 5. Build the executable with PyInstaller
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --paths "C:\\hostedtoolcache\\windows\\Python\\3.12.7\\x64\\Lib\\site-packages\\PyQt6\\Qt6\\plugins;PyQt6/Qt6/plugins" --clean
+          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --paths "C:\\hostedtoolcache\\windows\\Python\\3.12.7\\x64\\Lib\\site-packages\\PyQt6\\Qt6\\plugins;PyQt6/Qt6/plugins" --hidden-import core --clean
 
       # 6. Verify the build (optional)
       - name: Verify executable
@@ -53,7 +53,7 @@ jobs:
             Write-Error "Executable not found!"
             exit 1
           }
-            
+
       # 7. Display directory structure for debugging (optional)
       - name: Display directory structure
         run: |

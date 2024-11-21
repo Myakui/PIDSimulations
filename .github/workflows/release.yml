@@ -36,19 +36,16 @@ jobs:
           set PYTHONPATH=%GITHUB_WORKSPACE%\PIDSimulations
           pip install pyqt6
 
-      # 5. Install Visual C++ Redistributables (для работы с DLL)
-      - name: Install Visual C++ Redistributables
-        run: choco install vcredist-all
-      
       
       # 4. Install PyInstaller
       - name: Install PyInstaller
         run: |
           pip install pyinstaller
+
       # 5. Build the executable with PyInstaller
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --paths "C:\\hostedtoolcache\\windows\\Python\\3.12.7\\x64\\Lib\\site-packages\\PyQt6\\Qt6\\plugins;PyQt6/Qt6/plugins" --paths "C:\\Windows\\System32;C:\\Windows\\SysWOW64" --clean
+          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --paths "C:\\hostedtoolcache\\windows\\Python\\3.12.7\\x64\\Lib\\site-packages\\PyQt6\\Qt6\\plugins;PyQt6/Qt6/plugins" --clean
 
       # 6. Verify the build (optional)
       - name: Verify executable
@@ -57,6 +54,7 @@ jobs:
             Write-Error "Executable not found!"
             exit 1
           }
+
       # 7. Display directory structure for debugging (optional)
       - name: Display directory structure
         run: |

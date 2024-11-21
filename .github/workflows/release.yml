@@ -48,7 +48,7 @@ jobs:
       # 5. Build the executable with PyInstaller
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --add-data "C:\\hostedtoolcache\\windows\\Python\\3.12.7\\x64\\Lib\\site-packages\\PyQt6\\Qt6\\plugins;PyQt6/Qt6/plugins" --clean
+          pyinstaller src/gui/main.py --onefile --name pid-sim.exe --paths "C:\\hostedtoolcache\\windows\\Python\\3.12.7\\x64\\Lib\\site-packages\\PyQt6\\Qt6\\plugins;PyQt6/Qt6/plugins" --clean
 
       # 6. Verify the build (optional)
       - name: Verify executable
